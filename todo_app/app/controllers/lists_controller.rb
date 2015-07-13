@@ -32,7 +32,7 @@ class ListsController < ApplicationController
 
   def destroy
     List.find_by(id: params[:id]).destroy
-    redirect_to :root
+    redirect_to user_path(session[:id])
   end
 
   private
