@@ -6,8 +6,10 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.user_id = session[:id]
+
     if @list.save
-      redirect_to :root
+      redirect_to user_path(@list.user_id)
     else
     end
   end
@@ -35,6 +37,6 @@ class ListsController < ApplicationController
 
   private
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :user_id)
   end
 end

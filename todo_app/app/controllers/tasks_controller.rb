@@ -18,13 +18,15 @@ class TasksController < ApplicationController
   end
 
   def update
-    Task.find_by(id: params[:id]).update(task_params)
-    redirect_to :root
+    task = Task.find_by(id: params[:id]).update(task_params)
+    redirect_to list_path(task.list_id)
   end
 
   def destroy
-    Task.find_by(id: params[:id]).destroy
-    redirect_to :root
+    task = Task.find_by(id: params[:id])
+    list_id = task.list_id
+    task.destroy
+    redirect_to list_path(list_id)
   end
 
   private
