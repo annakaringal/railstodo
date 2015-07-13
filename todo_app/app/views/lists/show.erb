@@ -1,0 +1,13 @@
+<h1><%= @list.name %></h1>
+
+<%= render "tasks/new_form" %>
+
+<% @tasks.each do |task| %>
+  <div class='task'>
+    <%= task.description %><br>
+    <%= link_to "Edit", edit_task_path(task) %>
+    <%= link_to "Delete", task, method: :delete %>
+  </div>
+<% end %>
+
+<%= link_to "Home", :root%>
