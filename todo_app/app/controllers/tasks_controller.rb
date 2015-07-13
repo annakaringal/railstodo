@@ -1,8 +1,4 @@
 class TasksController < ApplicationController
-  def index
-    @tasks = Task.all
-  end
-
   def new
     @task = Task.new
   end
@@ -10,7 +6,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to :root
+      redirect_to list_path(@task.list_id)
     else
     end
   end
@@ -31,6 +27,6 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:description)
+    params.require(:task).permit(:description, :list_id)
   end
 end

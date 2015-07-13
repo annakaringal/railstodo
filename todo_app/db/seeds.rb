@@ -6,8 +6,22 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-TASKS = ["Walk the dog", "Grocery shopping", "Do laundry"]
+HOME_TASKS = ["Walk the dog", "Grocery shopping", "Do laundry"]
+WORK_TASKS = ["Write a report", "Give presentation"]
+LIST = ["Home task", "Work task"]
 
-TASKS.each do |task|
-  Task.create(description: task)
+LIST.each do |list|
+  List.create(name: list)
 end
+
+HOME_TASKS.each do |task|
+  Task.create(description: task, list_id: 1)
+end
+
+WORK_TASKS.each do |task|
+  Task.create(description: task, list_id: 2)
+end
+
+
+
+
