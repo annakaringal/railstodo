@@ -9,9 +9,14 @@
 HOME_TASKS = ["Walk the dog", "Grocery shopping", "Do laundry"]
 WORK_TASKS = ["Write a report", "Give presentation"]
 LIST = ["Home task", "Work task"]
+USER = [["anna","1234"],["alina","apple"]]
+
+USER.each do |user|
+  User.create(username: user[0], password: user[1])
+end
 
 LIST.each do |list|
-  List.create(name: list)
+  List.create(name: list, user_id: 1)
 end
 
 HOME_TASKS.each do |task|

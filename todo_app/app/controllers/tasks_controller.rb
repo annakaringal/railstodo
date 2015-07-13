@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   def new
+    require_logged_in
     @task = Task.new
   end
 
@@ -12,6 +13,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    require_logged_in
     @task = Task.find_by(id: params[:id])
   end
 

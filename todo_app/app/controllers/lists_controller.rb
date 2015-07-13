@@ -1,9 +1,6 @@
 class ListsController < ApplicationController
-  def index
-    @lists = List.all
-  end
-
   def new
+    require_logged_in
     @list = List.new
   end
 
@@ -16,11 +13,13 @@ class ListsController < ApplicationController
   end
 
   def show
+    require_logged_in
     @list = List.find_by(id: params[:id])
     @tasks = @list.tasks
   end
 
   def edit
+    require_logged_in
     @list = List.find_by(id: params[:id])
   end
 
