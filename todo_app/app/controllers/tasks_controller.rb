@@ -9,6 +9,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to list_path(@task.list_id)
     else
+      # else what?
     end
   end
 
@@ -18,7 +19,9 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = Task.find_by(id: params[:id]).update(task_params)
+    # task = Task.find_by(id: params[:id]).update(task_params)
+    # This gives an error - the variable "task" that you're calling ".list_id" on has the value of "true" instead of a task object. Look at the return value of what you're assigning to "task" on line 21. You should do the update first, then the save, on separate lines so you can have a conditional that checks if task is nil. Currently if task is nil, you don't have any kind of error handling.
+
     redirect_to list_path(task.list_id)
   end
 

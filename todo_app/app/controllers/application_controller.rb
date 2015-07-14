@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-    if session[:id]
+    # if session[:id]
+    # Use session[:user_id]
+    if session[:user_id]
       return User.find(session[:id])
     else
       return nil
@@ -17,6 +19,8 @@ class ApplicationController < ActionController::Base
   end
 
   def is_authenticated?
-    return !!session[:id]
+    # byebug
+    # return !!session[:id]
+    return !!session[:user_id]
   end
 end
